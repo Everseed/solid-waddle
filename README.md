@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PrepAI - We are humans tools
 
-## Getting Started
+PrepAI est une plateforme d'apprentissage intelligente qui aide les étudiants et professionnels à se préparer aux examens, certifications et entretiens techniques. La plateforme combine expertise humaine et intelligence artificielle pour offrir un apprentissage personnalisé.
 
-First, run the development server:
+## 🌟 Fonctionnalités
 
+### 🎯 Préparation Complète
+- **Entretiens Techniques** : FAANG, Startups, Entreprises Tech
+- **Certifications Professionnelles** : AWS, Google Cloud, Azure, etc.
+- **Entretiens RH** : Leadership, Comportemental, Mise en situation
+- **Examens Académiques** : GMAT, GRE, TOEFL, IELTS
+- **Tests Psychotechniques**
+- **Présentations & Pitchs**
+
+### 👥 Expertise Multiple
+- **Tech & Dev** : Web, Mobile, Cloud, DevOps
+- **Management** : Leadership, Gestion d'équipe, Agilité
+- **Business** : Stratégie, Finance, Marketing
+- **Communication** : Rédaction, Prise de parole
+- **RH** : Recrutement, Formation, GPEC
+
+### 🛠 Fonctionnalités Techniques
+- Sessions vidéo en direct avec WebRTC
+- Support de sous-groupes de travail
+- Enregistrement des sessions
+- Authentification sécurisée
+- Tableau blanc collaboratif
+- API Claude intégrée
+
+## 🚀 Installation
+
+1. **Cloner le projet**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [url-du-projet]
+cd prepai
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Installer les dépendances**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Configuration environnement**
+```bash
+cp .env.example .env.local
+```
+Remplir les variables d'environnement nécessaires :
+```env
+# Database
+DATABASE_URL=
+DATABASE_URL_UNPOOLED=
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Authentication (Clerk)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
 
-## Learn More
+# API Keys
+ANTHROPIC_API_KEY=
 
-To learn more about Next.js, take a look at the following resources:
+# WebRTC
+NEXT_PUBLIC_TURN_SERVER_URL=
+TURN_SERVER_USERNAME=
+TURN_SERVER_CREDENTIAL=
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Initialiser la base de données**
+```bash
+npx prisma db push
+npx prisma generate
+npx prisma db seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Lancer le serveur de développement**
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+## 🏗 Structure du Projet
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/
+│   ├── (auth)/              # Routes protégées
+│   │   ├── dashboard/       # Dashboard principal
+│   │   ├── settings/       # Paramètres utilisateur
+│   │   └── layout.tsx      # Layout authentifié
+│   ├── api/                # Routes API
+│   ├── layout.tsx          # Layout racine
+│   └── page.tsx            # Page d'accueil
+├── components/
+│   ├── ui/                 # Composants réutilisables
+│   ├── dashboard/          # Composants dashboard
+│   └── auth/              # Composants authentification
+├── hooks/                 # Custom hooks
+├── lib/                   # Utilitaires et configurations
+├── styles/               # Styles globaux
+└── types/                # Types TypeScript
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔒 Rôles et Permissions
+
+- **Admin** : Gestion complète de la plateforme
+- **Mentor** : Gestion des sessions et étudiants
+- **Creator** : Création de contenu pédagogique
+- **Student** : Accès aux cours et sessions
+
+## 🛠 Technologies Utilisées
+
+- **Frontend** : Next.js 14, React, TypeScript
+- **Styles** : TailwindCSS, ShadcnUI
+- **Auth** : Clerk
+- **Base de données** : PostgreSQL, Prisma
+- **Real-time** : WebRTC
+- **AI** : Claude API
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Consultez notre guide de contribution pour plus d'informations.
+
+## 📝 License
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## 🌐 Liens Utiles
+
+- [Documentation](docs/README.md)
+- [Guide de contribution](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
